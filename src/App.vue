@@ -1,11 +1,17 @@
 <template>
-  <div id="app"></div>
+    <div id="app">
+        <page-header/>
+    </div>
 </template>
 
 <script>
+import PageHeader from "@/components/PageHeader";
 
 export default {
-  name: 'App',
+    name: 'App',
+    components: {
+        PageHeader
+    }
 }
 </script>
 
@@ -13,5 +19,8 @@ export default {
 * {
     margin: 0;
     padding: 0;
+}
+#app {
+    background-color: #f7f7f7;
 }
 </style>
