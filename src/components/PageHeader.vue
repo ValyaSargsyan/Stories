@@ -1,10 +1,10 @@
 <template>
     <div class="header">
         <div class="logo">
-            <img src="@/assets/logo.svg" />
+            <img src="@/assets/images/logo.svg" />
         </div>
         <div class="profile">
-            <img src="@/assets/user.svg"/>
+            <img src="@/assets/images/user.svg"/>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .header {
     display: flex;
     justify-content: space-between;

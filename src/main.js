@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from "./store/index";
 
-Vue.config.productionTip = false
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
 
 new Vue({
   store,
