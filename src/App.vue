@@ -55,6 +55,7 @@ export default {
 }
 #app {
     background-color: #f7f7f7;
+    min-height: 100vh;
 }
 .main {
     max-width: 1366px;

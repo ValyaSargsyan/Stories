@@ -64,6 +64,7 @@ export default {
 
 <style scoped lang="scss">
 .publication {
+    position: relative;
     display: flex;
     border: 1px solid #e0e0e0;
     background-color: #ffffff;
@@ -74,6 +75,10 @@ export default {
         justify-content: space-between;
         margin: 12px 20px;
         width: 90%;
+
+        @media(max-width: 768px) {
+            width: 80%;
+        }
     }
     &-img {
         height: 75px;
@@ -99,6 +104,9 @@ export default {
     }
 
     .arrow {
+        position: absolute;
+        top: 20px;
+        right: 40px;
         width: 10px;
         height: 10px;
         border-bottom: 1px solid #8c8c8c;
@@ -110,6 +118,9 @@ export default {
         }
         &-up {
             transform: rotate(135deg);
+        }
+        @media(max-width: 768px) {
+            right: 20px;
         }
     }
     .author {

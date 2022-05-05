@@ -11,6 +11,8 @@ const state = {
     stories: [],
     nextPage: null,
     loading: false,
+    order_by: '',
+    languages: [],
 };
 
 const mutations = {
@@ -23,26 +25,40 @@ const mutations = {
     setLoading(state, data) {
         state.loading = data
     },
+    setOrderBy(state, data) {
+        state.order_by = data
+    },
+    setLanguages(state, data) {
+        state.languages = data
+    },
 };
 
 const actions = {
-     getStories({state, commit}, data) {
-         commit("setLoading", true)
-         // 'next_page': '38e50943-62f1-46da-923f-7d0cb8646ea9'
-         console.log(data, "data")
-         axios
-            .get('/stories', {params: {...data} })
+    getStories({state, commit}, payload) {
+        const data = {...payload}
+        if (state.order_by) {
+            data.order_by = state.order_by
+        }
+        if (state.languages.length) {
+            data.languages = state.languages.join()
+        }
+        commit("setLoading", true)
+        axios
+            .get('/stories', {params: {...data}})
             .then((result) => {
-                commit('setStories', [...state.stories,...result.data.stories])
-
+                if (payload && payload.next_page) {
+                    commit('setStories', [...state.stories, ...result.data.stories])
+                } else {
+                    commit('setStories', result.data.stories)
+                }
                 commit('setNextPage', result.data['next_page_token'])
             })
             .catch(error => {
                 console.log(error)
             })
-             .finally(() => {
-                 commit("setLoading", false)
-             })
+            .finally(() => {
+                commit("setLoading", false)
+            })
     },
 };
 
